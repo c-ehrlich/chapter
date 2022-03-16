@@ -39,18 +39,7 @@ export class AuthResolver {
       throw new Error('EMAIL_IN_USE');
     }
 
-    const instanceMember = await prisma.instance_roles.findUnique({
-      where: { name: 'member' },
-    });
-
-    const userData: Prisma.usersCreateInput = {
-      ...data,
-      instance_role: {
-        connect: {
-          id: instanceMember.id,
-        },
-      },
-    };
+    const userData: Prisma.usersCreateInput = data;
 
     return await prisma.users.create({ data: userData });
   }

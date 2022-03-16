@@ -3,7 +3,6 @@ export * from './Event';
 export * from './EventReminder';
 export * from './EventSponsor';
 export * from './EventTag';
-export * from './InstanceRole';
 export * from './Rsvp';
 export * from './Sponsor';
 export * from './Tag';

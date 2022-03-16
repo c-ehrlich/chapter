@@ -5,7 +5,6 @@ import createRsvps from './factories/rsvps.factory';
 import createSponsors from './factories/sponsors.factory';
 import createUsers from './factories/user.factory';
 import createVenues from './factories/venues.factory';
-import createInstanceRoles from './factories/instanceRoles.factory';
 import setupRoles from './setupRoles';
 
 (async () => {
@@ -25,9 +24,7 @@ import setupRoles from './setupRoles';
     }
   }
 
-  const instanceRoles = await createInstanceRoles();
-
-  const [userId, userIds] = await createUsers(instanceRoles);
+  const [userId, userIds] = await createUsers();
   const sponsorIds = await createSponsors();
 
   const chapterIds = await createChapters(userId);

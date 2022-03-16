@@ -5,15 +5,12 @@ import { prisma } from '../../../src/prisma';
 
 const { name, internet } = faker;
 
-const createUsers = async (
-  instanceRoles: Record<string, { name: string; id: number }>,
-): Promise<[number, number[]]> => {
+const createUsers = async (): Promise<[number, number[]]> => {
   // TODO: add seeding admin
   const userData: Prisma.usersCreateInput = {
     email: 'foo@bar.com',
     first_name: name.firstName(),
     last_name: name.lastName(),
-    instance_role: { connect: { id: instanceRoles.administrator.id } },
   };
 
   const user = await prisma.users.create({ data: userData });
@@ -24,7 +21,6 @@ const createUsers = async (
       email: internet.email(),
       first_name: name.firstName(),
       last_name: name.lastName(),
-      instance_role: { connect: { id: instanceRoles.member.id } },
     }),
   );
 
